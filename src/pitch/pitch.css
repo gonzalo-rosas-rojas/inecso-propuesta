@@ -1,0 +1,54 @@
+/* Pitch-only rules that are clearer in CSS than in utility classes. */
+
+html { scroll-behavior: auto; }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* An old fluorescent tube: the "Index of /" page flickers, then stays dim. */
+@keyframes parpadeo {
+  0%, 100% { opacity: 1; }
+  6% { opacity: 0.35; }
+  7% { opacity: 0.9; }
+  9% { opacity: 0.2; }
+  11% { opacity: 1; }
+  52% { opacity: 1; }
+  53% { opacity: 0.55; }
+  54% { opacity: 1; }
+}
+.parpadeo { animation: parpadeo 5.5s steps(1, end) infinite; }
+
+/* Blueprint grid used behind technical drawings. */
+.grilla {
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--color-cianotipo) 9%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--color-cianotipo) 9%, transparent) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.grilla-osc {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Rubber stamp on the inspection protocol. */
+.timbre {
+  border: 2px solid currentColor;
+  border-radius: 6px;
+  padding: 0.15rem 0.55rem;
+  font-weight: 800;
+  font-stretch: 87.5%;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+/* The iframe of the demo is laid out at its real width and scaled down to its frame. */
+.vista-demo { position: absolute; left: 0; top: 0; transform-origin: 0 0; border: 0; background: var(--color-blanco); }
+
+/* Luminaires of the last act. */
+.luminaria-luz { filter: drop-shadow(0 0 18px var(--color-energia)) drop-shadow(0 0 42px color-mix(in srgb, var(--color-energia) 60%, transparent)); }
+
+@media (prefers-reduced-motion: reduce) {
+  .parpadeo { animation: none; opacity: 0.85; }
+}

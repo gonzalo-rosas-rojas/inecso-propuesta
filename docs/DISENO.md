@@ -4,6 +4,8 @@
 
 Una página que se vende sola: cuenta la propuesta completa a INECSO Ingeniería (web nueva primero, portal de clientes después, cómo trabajaríamos y cómo se cobra) y deja recorrer una demo navegable de su web nueva. La revisa Gonza antes de enviarla.
 
+Versión 2 (2026-11-06), rehecha después de que Gonza la encontró pobre al lado de The Night Shift. Ahora usa React, Tailwind 4, Motion y Lenis; los actos se fijan y avanzan con el scroll; hay cinco modalidades de trabajo con su gráfico de pagos y un configurador de alcance; y la demo es una web completa con piezas interactivas.
+
 - **Audiencia:** la gerencia de INECSO. No son técnicos de software; sí son técnicos de lo suyo.
 - **Decisión en 30 segundos:** "esto es serio y es para nosotros".
 - **Prueba en 3 minutos:** ven su web nueva funcionando con sus propios textos, ven cómo un cliente seguiría su obra, y entienden qué cuesta y cómo se paga.
@@ -34,7 +36,9 @@ Tipografía: una sola familia, **Archivo** (variable, OFL, local). El ancho es p
 - Nada de tarjetas iguales con sombra; la estructura se dibuja con las líneas del plano.
 - Movimiento: el unifilar atado al scroll; un encendido de la demo al cargar; nada que entre deslizando en cada sección. `prefers-reduced-motion` deja todo quieto y legible.
 - Datos: lo real sale de la web antigua archivada o de una medición propia y lo dice; lo ficticio (obras del portal, fechas de bitácora) va rotulado como ejemplo.
-- Sitio estático sin dependencias, sin scripts ni estilos en línea, CSP estricta; se abre también con doble clic (scripts clásicos, no módulos).
+- Sitio estático compilado con Vite: sin scripts ni estilos en línea y con CSP estricta (la agrega el build). Ya no se abre con doble clic: se sirve con `npm run dev` o desde `dist/`.
+- Componentes de terceros solo con licencia MIT y revisados (Magic UI: marquee y number-ticker). Ni React Bits (Commons Clause) ni Aceternity (licencia propia) ni el MCP de 21st.dev (pide clave y reenvía cada mensaje a sus servidores). 21st.dev pide iniciar sesión hasta para el comando de shadcn.
+- Nada de diálogos de Radix: su bloqueo de scroll inyecta una etiqueta <style> que la CSP bloquea. El visor y la demo a pantalla completa usan <dialog> nativo o una versión propia.
 
 ## Revisión contra lo genérico
 

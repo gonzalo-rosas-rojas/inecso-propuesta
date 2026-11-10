@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+/* One family: Archivo, variable in width (62–125) and weight (100–900), SIL OFL, self-hosted. */
+@font-face {
+  font-family: "Archivo";
+  src: url("../assets/fonts/archivo-latin-var.woff2") format("woff2");
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-sans: "Archivo", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --color-grafito: #1b2024;
+  --color-grafito-2: #262d33;
+  --color-grafito-3: #313a42;
+  --color-tinta: #22292f;
+  --color-tinta-suave: #4c5761;
+  --color-papel: #eceeea;
+  --color-papel-2: #e2e5e0;
+  --color-blanco: #f8f9f7;
+  --color-cianotipo: #24518f;
+  --color-cianotipo-osc: #1a3b69;
+  --color-cianotipo-claro: #8fb0dc;
+  --color-linea: #b7c0c7;
+  --color-linea-osc: #3a434b;
+  --color-energia: #f2c014;
+  --color-energia-osc: #8a6a00;
+  --color-tierra: #2f8f5b;
+  --color-falla: #b5402a;
+  --ease-obra: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --animate-marquee: marquee var(--duration) infinite linear;
+  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(-100% - var(--gap))); }
+  }
+  @keyframes marquee-vertical {
+    from { transform: translateY(0); }
+    to { transform: translateY(calc(-100% - var(--gap))); }
+  }
+}
+
+@layer base {
+  html { -webkit-text-size-adjust: 100%; }
+  body { @apply bg-papel text-tinta font-sans antialiased; }
+  :focus-visible { outline: 3px solid var(--color-energia); outline-offset: 3px; }
+  ::selection { background: var(--color-energia); color: var(--color-grafito); }
+}
+
+/* Width axis as utilities: the plate-like headlines are wide, technical labels narrow. */
+@utility wdth-62 { font-stretch: 62%; }
+@utility wdth-75 { font-stretch: 75%; }
+@utility wdth-87 { font-stretch: 87.5%; }
+@utility wdth-100 { font-stretch: 100%; }
+@utility wdth-112 { font-stretch: 112.5%; }
+@utility wdth-125 { font-stretch: 125%; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+}
